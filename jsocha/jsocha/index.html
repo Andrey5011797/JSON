@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON конвертер профиля</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-wrapper">
+
+      <div class="input-section">
+        <h1 class="section-title">Профиль</h1>
+        <form class="profile-form" id="profileForm">
+          <label for="userNameField"> userName
+            <input id="userNameField" type="text" autocomplete="off" value="Андрей" />
+          </label>
+          <label for="ageField"> age
+            <input id="ageField" type="text" autocomplete="off" value="20" />
+          </label>
+          <label for="studentCheckbox"> isStudent
+            <input id="studentCheckbox" type="checkbox" checked />
+          </label>
+          <label for="cityField"> city
+            <input id="cityField" type="text" autocomplete="off" value="Москва" />
+          </label>
+          <label for="groupField"> group
+            <input id="groupField" type="text" autocomplete="off" value="ИСП-П 23-11" />
+          </label>
+          <label for="emailField"> email
+            <input id="emailField" type="email" autocomplete="off" value="morand05@mail.ru" />
+          </label>
+          <label for="tagsField">tags
+            <input id="tagsField" type="text" autocomplete="off" value="js, json, api" />
+          </label>
+          <button type="submit" class="action-button">Собрать объект</button>
+        </form>
+      </div>
+
+      <div class="export-section">
+        <h1 class="section-title">Экспорт</h1>
+        <div class="export-controls-panel">
+          <div class="spacing-selector">
+            <label>Форматирование</label>
+            <select id="spacingDropdown">
+              <option value="0">0</option>
+              <option value="2" selected>2</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="key-filter-section">
+            <h3>Фильтр ключей</h3>
+            <div class="checkbox-grid">
+              <label><input type="checkbox" class="keyCheckbox" value="id" checked> id</label>
+              <label><input type="checkbox" class="keyCheckbox" value="userName" checked> userName</label>
+              <label><input type="checkbox" class="keyCheckbox" value="age" checked> age</label>
+              <label><input type="checkbox" class="keyCheckbox" value="isStudent" checked> isStudent</label>
+              <label><input type="checkbox" class="keyCheckbox" value="tags" checked> tags</label>
+              <label><input type="checkbox" class="keyCheckbox" value="profile" checked> profile</label>
+              <label><input type="checkbox" class="keyCheckbox" value="createdAt" checked> createdAt</label>
+            </div>
+          </div>
+          <div class="export-button-group">
+            <button id="simpleExportBtn" class="action-button">Экспорт</button>
+            <button id="filteredExportBtn" class="action-button">Экспорт по ключам</button>
+            <button id="functionExportBtn" class="action-button">Экспорт (replacer-функция)</button>
+          </div>
+        </div>
+        <textarea rows="8" id="exportResultArea" placeholder="Результат экспорта" readonly></textarea>
+      </div>
+
+      <div class="import-section">
+        <h1 class="section-title">Импорт</h1>
+        <textarea rows="8" id="importSourceArea" placeholder='{"userName":"Андрей","age":20,"isStudent":true,"tags":["js","json","api"],"profile":{"city":"Москва","group":"ИСП-П 23-11","contacts":{"email":"morand05@mail.ru"}},"createdAt":"2026-02-27T00:00:00.000Z"}'>{"userName":"Андрей","age":20,"isStudent":true,"tags":["js","json","api"],"profile":{"city":"Москва","group":"ИСП-П 23-11","contacts":{"email":"morand05@mail.ru"}},"createdAt":"2026-02-27T00:00:00.000Z"}</textarea>
+        <button id="startImportBtn" class="action-button">Импорт</button>
+        
+        <div class="import-result-block">
+          <h2>Результат импорта:</h2>
+          <pre id="importedDataDisplay">Ожидание импорта</pre>
+        </div>
+        <div class="error-message-container" id="errorContainer">
+          <h3>Ошибка</h3>
+          <p id="errorDescription"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
